@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x177FE67DB65D89FE (hsoft@hardcoded.net)
 #
 Name     : Send2Trash
-Version  : 1.4.2
-Release  : 1
-URL      : https://pypi.python.org/packages/6a/32/7e7f66ed420fabefd7b2f30dd21f4b58689eb080704fc93cfb5319cbc054/Send2Trash-1.4.2.tar.gz
-Source0  : https://pypi.python.org/packages/6a/32/7e7f66ed420fabefd7b2f30dd21f4b58689eb080704fc93cfb5319cbc054/Send2Trash-1.4.2.tar.gz
-Source99 : https://pypi.python.org/packages/6a/32/7e7f66ed420fabefd7b2f30dd21f4b58689eb080704fc93cfb5319cbc054/Send2Trash-1.4.2.tar.gz.asc
+Version  : 1.5.0
+Release  : 2
+URL      : https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz
+Source0  : https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz
+Source99 : https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz.asc
 Summary  : Send file to trash natively under Mac OS X, Windows and Linux.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -58,14 +58,14 @@ python3 components for the Send2Trash package.
 
 
 %prep
-%setup -q -n Send2Trash-1.4.2
+%setup -q -n Send2Trash-1.5.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517760977
+export SOURCE_DATE_EPOCH=1518803674
 python3 setup.py build -b py3
 
 %install
