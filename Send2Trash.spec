@@ -17,7 +17,7 @@ Requires: Send2Trash-python3
 Requires: Send2Trash-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
