@@ -6,42 +6,35 @@
 #
 Name     : Send2Trash
 Version  : 1.5.0
-Release  : 12
+Release  : 13
 URL      : https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz
 Source0  : https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz
 Source99 : https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz.asc
 Summary  : Send file to trash natively under Mac OS X, Windows and Linux.
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: Send2Trash-python3
-Requires: Send2Trash-python
-BuildRequires : pbr
-BuildRequires : pip
-
-BuildRequires : python3-dev
-BuildRequires : setuptools
+Requires: Send2Trash-license = %{version}-%{release}
+Requires: Send2Trash-python = %{version}-%{release}
+Requires: Send2Trash-python3 = %{version}-%{release}
+BuildRequires : buildreq-distutils3
 
 %description
+==================================================
 Send2Trash -- Send files to trash on all platforms
-        ==================================================
-        
-        Send2Trash is a small package that sends files to the Trash (or Recycle Bin) *natively* and on
-        *all platforms*. On OS X, it uses native ``FSMoveObjectToTrashSync`` Cocoa calls, on Windows, it
-        uses native (and ugly) ``SHFileOperation`` win32 calls. On other platforms, if `PyGObject`_ and
-        `GIO`_ are available, it will use this.  Otherwise, it will fallback to its own implementation
-        of the `trash specifications from freedesktop.org`_.
-        
-        ``ctypes`` is used to access native libraries, so no compilation is necessary.
-        
-        Send2Trash supports Python 2.7 and up (Python 3 is supported).
-        
-        Installation
-        ------------
+==================================================
+
+%package license
+Summary: license components for the Send2Trash package.
+Group: Default
+
+%description license
+license components for the Send2Trash package.
+
 
 %package python
 Summary: python components for the Send2Trash package.
 Group: Default
-Requires: Send2Trash-python3
+Requires: Send2Trash-python3 = %{version}-%{release}
 Provides: send2trash-python
 
 %description python
@@ -65,18 +58,33 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1518803674
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1557099315
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/Send2Trash
+cp LICENSE %{buildroot}/usr/share/package-licenses/Send2Trash/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/Send2Trash/LICENSE
 
 %files python
 %defattr(-,root,root,-)
