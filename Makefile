@@ -1,5 +1,5 @@
 PKG_NAME := Send2Trash
-URL = https://pypi.python.org/packages/13/2e/ea40de0304bb1dc4eb309de90aeec39871b9b7c4bd30f1a3cdcb3496f5c0/Send2Trash-1.5.0.tar.gz
+URL = https://files.pythonhosted.org/packages/6c/9d/d66cc2adbe7643b3ce8bc100a0e5283ca97aba40630763fabe76d4f7bbfc/Send2Trash-1.7.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
