@@ -4,7 +4,7 @@
 #
 Name     : Send2Trash
 Version  : 1.8.0
-Release  : 31
+Release  : 32
 URL      : https://files.pythonhosted.org/packages/49/2c/d990b8d5a7378dde856f5a82e36ed9d6061b5f2d00f39dc4317acd9538b4/Send2Trash-1.8.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/49/2c/d990b8d5a7378dde856f5a82e36ed9d6061b5f2d00f39dc4317acd9538b4/Send2Trash-1.8.0.tar.gz
 Summary  : Send file to trash natively under Mac OS X, Windows and Linux.
